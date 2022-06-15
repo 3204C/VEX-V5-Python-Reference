@@ -2,8 +2,11 @@ from __future__ import print_function
 import builtins as __builtin__
 import os
 import sys
+import time
 
 CompetitionState = input('Please enter the competition state. Please enter either "driver_control" or "autonomous":')
+SECONDS = "SECONDS"
+MSEC = "MSEC"
 
 class Competition():
     def __init__(self, driver_control, autonomous):
@@ -162,10 +165,69 @@ class brain():
         def released(callback):
             callback()
 
+        @staticmethod
+        def row():
+            return 20
+
+        @staticmethod
+        def column():
+            return 80
+
+        @staticmethod
+        def pressing(callback):
+            return True
+
+        @staticmethod
+        def x_position():
+            return 0
+
+        @staticmethod
+        def y_position():
+            return 0
+
+    class battery():
+        @staticmethod
+        def voltage():
+            return 12.0
+
+        @staticmethod
+        def current():
+            return 16.0
+
+        @staticmethod
+        def capacity():
+            return 100.0
+
     class timer():
         @staticmethod
-        def event(callback, time):
+        def event(callback, timee):
+            time.sleep(timee*1000)
             callback()
+
+        @staticmethod
+        def clear():
+            pass
+
+        @staticmethod
+        def time(UNITS):
+            pass
+
+    class Event():
+        @staticmethod
+        def broadcast():
+            pass
+
+        @staticmethod
+        def broadcast_and_wait():
+            pass
+
+        @staticmethod
+        def __call__(callback):
+            callback()
+
+        @staticmethod
+        def wait(timee):
+            time.sleep(timee)
 
 def print(text):
     if text == r"\033[2J":
